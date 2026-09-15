@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baby Shower - Alice Madelyn</title>
+  <meta name="description" content="Invitaci&oacute;n al Baby Shower de Alice Madelyn de la Cruz Romo" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Quicksand:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --pink: #f4c2c2;
+      --pink-deep: #e8a0b4;
+      --pink-light: #fce4ec;
+      --purple: #ce93d8;
+      --purple-light: #f3e5f5;
+      --gold: #d4af37;
+      --gold-light: #f5e6c8;
+      --cream: #fff9f0;
+      --white: #ffffff;
+      --text-dark: #4a3548;
+      --text-medium: #7a5f78;
+      --text-light: #b08fae;
+      --shadow-soft: 0 8px 32px rgba(206,147,216,0.15);
+      --shadow-card: 0 12px 40px rgba(228,160,180,0.2);
+    }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      font-family:'Quicksand',sans-serif;
+      background:var(--cream);
+      color:var(--text-dark);
+      overflow-x:hidden;
+      line-height:1.7;
+    }
+
+    /* ===== FLOATING HEARTS ===== */
+    .floating-hearts {
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      pointer-events:none; z-index:0; overflow:hidden;
+    }
+    .heart {
+      position:absolute; font-size:20px; opacity:0;
+      animation:floatHeart linear infinite;
+    }
+    @keyframes floatHeart {
+      0%   { transform:translateY(110vh) rotate(0deg) scale(0.5); opacity:0; }
+      10%  { opacity:0.6; }
+      90%  { opacity:0.4; }
+      100% { transform:translateY(-10vh) rotate(360deg) scale(1.2); opacity:0; }
+    }
+
+    /* ===== SPARKLE CURSOR ===== */
+    .sparkle {
+      position:fixed; pointer-events:none; width:8px; height:8px;
+      border-radius:50%; background:var(--gold);
+      animation:sparkleOut 0.8s ease-out forwards; z-index:9999;
+    }
+    @keyframes sparkleOut {
+      0%   { transform:scale(1); opacity:1; }
+      100% { transform:scale(0) translateY(-20px); opacity:0; }
+    }
+
+    /* ===== BACKGROUND BLOBS ===== */
+    .bg-blob {
+      position:fixed; border-radius:50%; filter:blur(80px);
+      opacity:0.3; z-index:-1; animation:blobFloat 20s ease-in-out infinite;
+    }
+    .blob-1 { width:500px; height:500px; background:linear-gradient(135deg,var(--pink),var(--purple)); top:-10%; right:-10%; }
+    .blob-2 { width:400px; height:400px; background:linear-gradient(135deg,var(--purple-light),var(--pink-light)); bottom:10%; left:-10%; animation-delay:-7s; }
+    .blob-3 { width:350px; height:350px; background:linear-gradient(135deg,var(--gold-light),var(--pink-light)); top:40%; right:-5%; animation-delay:-14s; }
+    @keyframes blobFloat {
+      0%,100% { transform:translate(0,0) scale(1); }
+      33%     { transform:translate(30px,-30px) scale(1.05); }
+      66%     { transform:translate(-20px,20px) scale(0.95); }
+    }
+
+    /* ===== INTRO OVERLAY ===== */
+    .intro-overlay {
+      position:fixed; inset:0; z-index:10000;
+      background:linear-gradient(135deg,var(--pink-light),var(--purple-light),var(--cream));
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      transition:opacity 0.8s ease,transform 0.8s ease;
+    }
+    .intro-overlay.hidden { opacity:0; transform:scale(1.1); pointer-events:none; }
+    .intro-icon { font-size:4rem; animation:introBounce 1s ease-in-out infinite; }
+    .intro-text { font-family:'Great Vibes',cursive; font-size:2.2rem; color:var(--pink-deep); margin-top:16px; text-align:center; }
+    .intro-hint {
+      font-size:0.85rem; color:var(--text-medium); margin-top:20px;
+      animation:fadeInUp 1s ease 0.5s both; cursor:pointer;
+      padding:10px 28px; border:2px solid rgba(228,160,180,0.3);
+      border-radius:50px; transition:all 0.3s ease;
+      background:transparent; font-family:'Quicksand',sans-serif;
+    }
+    .intro-hint:hover { background:rgba(228,160,180,0.1); border-color:var(--pink-deep); }
+    @keyframes introBounce { 0%,100%{transform:scale(1);} 50%{transform:scale(1.1);} }
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes fadeInScale { from{opacity:0;transform:scale(0.8);} to{opacity:1;transform:scale(1);} }
+    @keyframes confettiBurst { 0%{transform:translate(0,0) rotate(0);opacity:1;} 100%{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0;} }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position:fixed; top:0; left:0; width:100%; z-index:100;
+      padding:20px 0; transition:all 0.4s ease;
+    }
+    .site-header.scrolled {
+      background:rgba(255,249,240,0.92); backdrop-filter:blur(20px);
+      box-shadow:0 2px 20px rgba(206,147,216,0.1); padding:12px 0;
+    }
+    .container { max-width:900px; margin:0 auto; padding:0 24px; }
+    .nav { display:flex; align-items:center; justify-content:space-between; }
+    .brand {
+      font-family:'Great Vibes',cursive; font-size:1.7rem;
+      color:var(--pink-deep); text-decoration:none; transition:color 0.3s;
+    }
+    .nav-links { display:flex; gap:24px; }
+    .nav-links a {
+      text-decoration:none; color:var(--text-medium); font-weight:600;
+      font-size:0.85rem; letter-spacing:0.5px; transition:color 0.3s; position:relative;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px;
+      background:linear-gradient(90deg,var(--pink-deep),var(--purple));
+      transition:width 0.3s; border-radius:2px;
+    }
+    .nav-links a:hover { color:var(--pink-deep); }
+    .nav-links a:hover::after { width:100%; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height:100vh; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; text-align:center;
+      padding:110px 24px 60px; position:relative;
+    }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:linear-gradient(135deg,rgba(244,194,194,0.3),rgba(206,147,216,0.3));
+      border:1px solid rgba(228,160,180,0.3); border-radius:50px;
+      padding:8px 22px; font-size:0.82rem; font-weight:700;
+      color:var(--pink-deep); letter-spacing:1.5px;
+      text-transform:uppercase; margin-bottom:24px;
+      animation:fadeInDown 1s ease;
+    }
+    .hero h1 {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.2rem,5.5vw,3.8rem);
+      font-weight:600; line-height:1.2; margin-bottom:12px;
+      color:var(--text-dark); animation:fadeInUp 1s ease 0.2s both;
+    }
+    .hero h1 .highlight {
+      display:block; font-family:'Great Vibes',cursive;
+      font-weight:400; font-size:clamp(2.6rem,6.5vw,4.5rem);
+      color:var(--pink-deep); margin-top:4px;
+    }
+    .hero-baby-name {
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(2.2rem,5vw,3.6rem);
+      color:var(--purple); margin-bottom:16px;
+      animation:fadeInUp 1s ease 0.3s both;
+    }
+    .hero-parents {
+      font-size:0.95rem; color:var(--text-medium); margin-bottom:28px;
+      animation:fadeInUp 1s ease 0.35s both;
+      font-weight:500;
+    }
+    .hero-subtitle {
+      font-size:1.1rem; color:var(--text-medium); max-width:540px;
+      margin-bottom:36px; animation:fadeInUp 1s ease 0.4s both; line-height:1.8;
+    }
+    .hero-image-wrapper {
+      position:relative; margin-bottom:36px;
+      animation:fadeInScale 1.2s ease 0.6s both;
+    }
+    .hero-image-wrapper::before {
+      content:''; position:absolute; top:-16px; left:-16px; right:-16px; bottom:-16px;
+      background:linear-gradient(135deg,rgba(244,194,194,0.2),rgba(206,147,216,0.2),rgba(212,175,55,0.1));
+      border-radius:24px; z-index:-1; animation:glowPulse 3s ease-in-out infinite;
+    }
+    .hero-image {
+      width:300px; max-width:80vw; border-radius:20px;
+      box-shadow:var(--shadow-card); border:3px solid rgba(255,255,255,0.6);
+      transition:transform 0.5s ease,box-shadow 0.5s ease;
+      display:block;
+    }
+    .hero-image:hover {
+      transform:scale(1.03) rotate(-1deg);
+      box-shadow:0 16px 48px rgba(228,160,180,0.3);
+    }
+    @keyframes glowPulse { 0%,100%{opacity:0.6;transform:scale(1);} 50%{opacity:1;transform:scale(1.02);} }
+
+    .hero-actions {
+      display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
+      animation:fadeInUp 1s ease 0.8s both;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:14px 30px; border-radius:50px;
+      font-family:'Quicksand',sans-serif; font-weight:600;
+      font-size:0.92rem; text-decoration:none; cursor:pointer;
+      transition:all 0.4s cubic-bezier(0.4,0,0.2,1);
+      border:none; letter-spacing:0.3px;
+    }
+    .btn-primary {
+      background:linear-gradient(135deg,var(--pink-deep),var(--purple));
+      color:white; box-shadow:0 4px 20px rgba(228,160,180,0.4);
+    }
+    .btn-primary:hover {
+      transform:translateY(-2px); box-shadow:0 8px 30px rgba(228,160,180,0.5);
+      background:linear-gradient(135deg,var(--purple),var(--pink-deep));
+    }
+    .btn-whatsapp {
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      color:white; box-shadow:0 4px 20px rgba(37,211,102,0.35);
+    }
+    .btn-whatsapp:hover {
+      transform:translateY(-2px); box-shadow:0 8px 30px rgba(37,211,102,0.45);
+    }
+    .btn-ghost {
+      background:transparent; color:var(--text-medium);
+      border:2px solid rgba(206,147,216,0.3);
+    }
+    .btn-ghost:hover {
+      background:rgba(244,194,194,0.1); border-color:var(--pink-deep);
+      color:var(--pink-deep); transform:translateY(-2px);
+    }
+
+    /* ===== DIVIDER ===== */
+    .section-divider {
+      display:flex; align-items:center; justify-content:center;
+      gap:14px; padding:36px 0;
+    }
+    .divider-line { height:1px; width:70px; background:linear-gradient(90deg,transparent,var(--pink-deep),transparent); }
+    .divider-icon { font-size:1.4rem; color:var(--pink-deep); animation:heartbeat 2s ease-in-out infinite; }
+    @keyframes heartbeat { 0%,100%{transform:scale(1);} 25%{transform:scale(1.15);} 40%{transform:scale(1);} 60%{transform:scale(1.1);} }
+
+    /* ===== COUNTDOWN ===== */
+    .countdown-section { padding:36px 0 50px; text-align:center; }
+    .countdown-title { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--text-dark); margin-bottom:6px; }
+    .countdown-subtitle { font-family:'Great Vibes',cursive; font-size:1.3rem; color:var(--pink-deep); margin-bottom:28px; }
+    .countdown-grid { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+    .countdown-item {
+      background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
+      border:1px solid rgba(228,160,180,0.2); border-radius:18px;
+      padding:16px 20px; min-width:85px;
+      box-shadow:var(--shadow-soft); transition:transform 0.3s ease;
+    }
+    .countdown-item:hover { transform:translateY(-4px); }
+    .countdown-number { font-family:'Playfair Display',serif; font-size:2.4rem; font-weight:700; color:var(--pink-deep); line-height:1; }
+    .countdown-label { font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:2px; margin-top:5px; font-weight:600; }
+
+    /* ===== DETAILS ===== */
+    .details-section { padding:50px 0; }
+    .details-title { font-family:'Playfair Display',serif; font-size:1.9rem; text-align:center; color:var(--text-dark); margin-bottom:6px; }
+    .details-subtitle { font-family:'Great Vibes',cursive; font-size:1.3rem; text-align:center; color:var(--pink-deep); margin-bottom:40px; }
+    .details-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+    .detail-card {
+      background:rgba(255,255,255,0.75); backdrop-filter:blur(12px);
+      border:1px solid rgba(228,160,180,0.2); border-radius:22px;
+      padding:30px 24px; text-align:center;
+      box-shadow:var(--shadow-soft); transition:all 0.4s ease;
+      position:relative; overflow:hidden;
+    }
+    .detail-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:4px;
+      background:linear-gradient(90deg,var(--pink-deep),var(--purple),var(--gold));
+      opacity:0; transition:opacity 0.4s ease;
+    }
+    .detail-card:hover { transform:translateY(-5px); box-shadow:var(--shadow-card); }
+    .detail-card:hover::before { opacity:1; }
+    .detail-icon { font-size:2.2rem; margin-bottom:14px; display:block; }
+    .detail-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-light); font-weight:700; margin-bottom:6px; }
+    .detail-value { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--text-dark); font-weight:600; line-height:1.5; }
+    .detail-extra { font-size:0.88rem; color:var(--text-medium); margin-top:5px; line-height:1.6; }
+
+    /* ===== GIFT SECTION ===== */
+    .gift-section { padding:50px 0; text-align:center; }
+    .gift-card {
+      background:rgba(255,255,255,0.65); backdrop-filter:blur(14px);
+      border:1px solid rgba(228,160,180,0.2); border-radius:28px;
+      padding:44px 32px; max-width:580px; margin:0 auto;
+      box-shadow:var(--shadow-card); position:relative; overflow:hidden;
+    }
+    .gift-icon { font-size:2.8rem; margin-bottom:14px; display:block; }
+    .gift-title { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--text-dark); margin-bottom:14px; }
+    .gift-text { font-size:1rem; color:var(--text-medium); line-height:1.9; margin-bottom:18px; }
+    .gift-list { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-bottom:20px; }
+    .gift-tag {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:8px 20px; border-radius:50px;
+      background:linear-gradient(135deg,rgba(244,194,194,0.25),rgba(206,147,216,0.25));
+      border:1px solid rgba(228,160,180,0.3);
+      font-size:0.88rem; font-weight:600; color:var(--pink-deep);
+    }
+
+    /* ===== VIDEO SECTION ===== */
+    .video-section { padding:50px 0; text-align:center; }
+    .video-title { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--text-dark); margin-bottom:6px; }
+    .video-subtitle { font-family:'Great Vibes',cursive; font-size:1.2rem; color:var(--pink-deep); margin-bottom:28px; }
+    .video-wrapper {
+      position:relative; max-width:480px; margin:0 auto;
+      border-radius:24px; overflow:hidden;
+      box-shadow:var(--shadow-card);
+      border:3px solid rgba(255,255,255,0.5);
+      background:var(--pink-light);
+    }
+    .video-wrapper video {
+      width:100%; display:block; border-radius:22px;
+    }
+    .video-play-btn {
+      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      width:64px; height:64px; border-radius:50%;
+      background:rgba(255,255,255,0.85); backdrop-filter:blur(8px);
+      border:none; cursor:pointer; font-size:1.6rem;
+      box-shadow:0 4px 24px rgba(0,0,0,0.15);
+      transition:all 0.3s ease; z-index:2;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .video-play-btn:hover { transform:translate(-50%,-50%) scale(1.1); background:rgba(255,255,255,0.95); }
+    .video-play-btn.hidden { display:none; }
+
+    /* ===== GALLERY ===== */
+    .gallery-section { padding:50px 0; }
+    .gallery-title { font-family:'Playfair Display',serif; font-size:1.7rem; text-align:center; color:var(--text-dark); margin-bottom:6px; }
+    .gallery-subtitle { font-family:'Great Vibes',cursive; font-size:1.2rem; text-align:center; color:var(--pink-deep); margin-bottom:32px; }
+    .gallery-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px;
+    }
+    .gallery-item {
+      border-radius:18px; overflow:hidden; aspect-ratio:1;
+      background:linear-gradient(135deg,var(--pink-light),var(--purple-light));
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:all 0.4s ease;
+      box-shadow:var(--shadow-soft); position:relative;
+    }
+    .gallery-item:hover {
+      transform:scale(1.04) rotate(-1deg); box-shadow:var(--shadow-card);
+    }
+    .gallery-item img {
+      width:100%; height:100%; object-fit:cover;
+      transition:transform 0.5s ease;
+    }
+    .gallery-item:hover img { transform:scale(1.08); }
+    .gallery-item .gallery-label {
+      position:absolute; bottom:0; left:0; right:0;
+      padding:10px 14px; background:linear-gradient(transparent,rgba(0,0,0,0.45));
+      color:white; font-size:0.78rem; font-weight:600;
+      opacity:0; transition:opacity 0.3s ease;
+    }
+    .gallery-item:hover .gallery-label { opacity:1; }
+
+    /* ===== DEDICATION SECTION ===== */
+    .dedication-section { padding:60px 0; text-align:center; }
+    .dedication-card {
+      background:rgba(255,255,255,0.65); backdrop-filter:blur(16px);
+      border:1px solid rgba(228,160,180,0.25); border-radius:28px;
+      padding:48px 32px; max-width:620px; margin:0 auto;
+      box-shadow:var(--shadow-card); position:relative; overflow:hidden;
+    }
+    .dedication-card::before {
+      content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+      background:conic-gradient(from 0deg,transparent,rgba(244,194,194,0.08),transparent,rgba(206,147,216,0.08),transparent);
+      animation:dedicationShimmer 8s linear infinite;
+    }
+    @keyframes dedicationShimmer { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+    .dedication-icon { font-size:2.8rem; margin-bottom:16px; display:block; position:relative; }
+    .dedication-title { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--text-dark); margin-bottom:10px; position:relative; }
+    .dedication-subtitle { font-family:'Great Vibes',cursive; font-size:1.2rem; color:var(--pink-deep); margin-bottom:24px; position:relative; }
+    .dedication-textarea {
+      width:100%; min-height:120px; border-radius:18px;
+      border:2px solid rgba(228,160,180,0.25);
+      background:rgba(255,255,255,0.6); backdrop-filter:blur(8px);
+      padding:16px 20px; font-family:'Quicksand',sans-serif;
+      font-size:0.95rem; color:var(--text-dark); resize:vertical;
+      transition:border-color 0.3s ease, box-shadow 0.3s ease;
+      position:relative;
+    }
+    .dedication-textarea:focus {
+      outline:none; border-color:var(--pink-deep);
+      box-shadow:0 0 0 4px rgba(232,160,180,0.15);
+    }
+    .dedication-textarea::placeholder {
+      color:var(--text-light); font-style:italic;
+    }
+    .dedication-char-count {
+      font-size:0.75rem; color:var(--text-light); text-align:right;
+      margin-top:6px; position:relative;
+    }
+    .dedication-send-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:14px 32px; border-radius:50px;
+      background:linear-gradient(135deg,var(--pink-deep),var(--purple));
+      color:white; font-weight:700; font-size:0.92rem;
+      border:none; cursor:pointer; margin-top:20px;
+      box-shadow:0 4px 20px rgba(228,160,180,0.4);
+      transition:all 0.4s ease; font-family:'Quicksand',sans-serif;
+      position:relative;
+    }
+    .dedication-send-btn:hover {
+      transform:translateY(-2px); box-shadow:0 8px 30px rgba(228,160,180,0.5);
+    }
+    .dedication-messages {
+      margin-top:28px; position:relative;
+    }
+    .dedication-messages-title {
+      font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--text-dark);
+      margin-bottom:16px; position:relative;
+    }
+    .dedication-bubble {
+      background:rgba(255,255,255,0.55); backdrop-filter:blur(10px);
+      border:1px solid rgba(228,160,180,0.2); border-radius:18px;
+      padding:14px 18px; margin-bottom:10px; text-align:left;
+      animation:fadeInUp 0.5s ease both; position:relative;
+    }
+    .dedication-bubble-author {
+      font-weight:700; font-size:0.82rem; color:var(--purple); margin-bottom:3px;
+    }
+    .dedication-bubble-text {
+      font-size:0.9rem; color:var(--text-medium); line-height:1.6; font-style:italic;
+    }
+    .dedication-bubble-time {
+      font-size:0.7rem; color:var(--text-light); margin-top:4px; text-align:right;
+    }
+
+    /* ===== MESSAGE ===== */
+    .message-section { padding:60px 0; text-align:center; }
+    .message-card {
+      background:rgba(255,255,255,0.6); backdrop-filter:blur(16px);
+      border:1px solid rgba(228,160,180,0.25); border-radius:28px;
+      padding:48px 36px; max-width:600px; margin:0 auto;
+      box-shadow:var(--shadow-card); position:relative; overflow:hidden;
+    }
+    .message-icon { font-size:2.6rem; margin-bottom:16px; display:block; }
+    .message-title { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--text-dark); margin-bottom:14px; }
+    .message-text { font-size:1rem; color:var(--text-medium); line-height:2; font-style:italic; }
+    .message-signature { font-family:'Great Vibes',cursive; font-size:1.5rem; color:var(--pink-deep); margin-top:20px; }
+
+    /* ===== WHATSAPP RSVP ===== */
+    .rsvp-section { padding:60px 0; text-align:center; }
+    .rsvp-card {
+      background:rgba(255,255,255,0.7); backdrop-filter:blur(14px);
+      border:1px solid rgba(228,160,180,0.25); border-radius:28px;
+      padding:44px 32px; max-width:500px; margin:0 auto;
+      box-shadow:var(--shadow-card);
+    }
+    .rsvp-icon { font-size:2.6rem; margin-bottom:14px; display:block; }
+    .rsvp-title { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--text-dark); margin-bottom:6px; }
+    .rsvp-subtitle { font-size:0.95rem; color:var(--text-medium); margin-bottom:24px; }
+    .rsvp-whatsapp-btn {
+      display:inline-flex; align-items:center; gap:10px;
+      padding:18px 42px; border-radius:50px;
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      color:white; font-weight:700; font-size:1.05rem;
+      text-decoration:none; cursor:pointer;
+      box-shadow:0 6px 24px rgba(37,211,102,0.4);
+      transition:all 0.4s ease; border:none;
+      font-family:'Quicksand',sans-serif;
+    }
+    .rsvp-whatsapp-btn:hover {
+      transform:translateY(-3px);
+      box-shadow:0 10px 36px rgba(37,211,102,0.5);
+    }
+    .rsvp-note {
+      font-size:0.78rem; color:var(--text-light); margin-top:18px; line-height:1.6;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      padding:36px 0; text-align:center;
+      border-top:1px solid rgba(228,160,180,0.15);
+    }
+    .footer-hearts { font-size:1.1rem; margin-bottom:6px; color:var(--pink-deep); }
+    .footer-text { font-size:0.82rem; color:var(--text-light); font-weight:500; }
+    .footer-text .footer-name { font-family:'Great Vibes',cursive; font-size:1rem; color:var(--pink-deep); }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity:0; transform:translateY(28px); transition:all 0.8s cubic-bezier(0.4,0,0.2,1); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    /* ===== MUSIC TOGGLE ===== */
+    .music-toggle {
+      position:fixed; bottom:20px; right:20px;
+      width:48px; height:48px; border-radius:50%;
+      background:linear-gradient(135deg,var(--pink-deep),var(--purple));
+      color:white; border:none; font-size:1.2rem;
+      cursor:pointer; box-shadow:0 4px 18px rgba(228,160,180,0.35);
+      z-index:99; transition:all 0.3s ease;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .music-toggle:hover { transform:scale(1.1); }
+    .music-toggle.playing { animation:musicPulse 1.5s ease-in-out infinite; }
+    @keyframes musicPulse { 0%,100%{box-shadow:0 4px 18px rgba(228,160,180,0.35);} 50%{box-shadow:0 4px 30px rgba(228,160,180,0.55);} }
+
+    /* ===== SCROLL INDICATOR ===== */
+    .scroll-indicator {
+      position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      animation:fadeInUp 1s ease 1.2s both;
+    }
+    .scroll-indicator span { font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--text-light); }
+    .scroll-arrow {
+      width:22px; height:22px;
+      border-right:2px solid var(--pink-deep); border-bottom:2px solid var(--pink-deep);
+      transform:rotate(45deg); animation:scrollBounce 2s ease-in-out infinite;
+    }
+    @keyframes scrollBounce { 0%,20%,50%,80%,100%{transform:rotate(45deg) translateY(0);} 40%{transform:rotate(45deg) translateY(5px);} 60%{transform:rotate(45deg) translateY(3px);} }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      position:fixed; inset:0; z-index:10000;
+      background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; pointer-events:none; transition:opacity 0.4s ease;
+      cursor:pointer;
+    }
+    .lightbox.active { opacity:1; pointer-events:all; }
+    .lightbox img {
+      max-width:90vw; max-height:85vh; border-radius:18px;
+      box-shadow:0 16px 60px rgba(0,0,0,0.4);
+      animation:fadeInScale 0.4s ease;
+    }
+    .lightbox-close {
+      position:absolute; top:20px; right:20px;
+      width:44px; height:44px; border-radius:50%;
+      background:rgba(255,255,255,0.15); border:none;
+      color:white; font-size:1.5rem; cursor:pointer;
+      transition:background 0.3s ease;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .lightbox-close:hover { background:rgba(255,255,255,0.3); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width:640px) {
+      .nav-links { display:none; }
+      .hero h1 { font-size:2rem; }
+      .hero h1 .highlight { font-size:2.2rem; }
+      .hero-baby-name { font-size:2rem; }
+      .hero-image { width:260px; }
+      .countdown-grid { gap:10px; }
+      .countdown-item { min-width:70px; padding:12px 14px; }
+      .countdown-number { font-size:1.8rem; }
+      .details-grid { grid-template-columns:1fr; }
+      .message-card { padding:32px 20px; }
+      .rsvp-card { padding:32px 20px; }
+      .dedication-card { padding:32px 20px; }
+      .gallery-grid { grid-template-columns:repeat(2,1fr); }
+      .video-wrapper { max-width:100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Intro Overlay -->
+  <div class="intro-overlay" id="introOverlay">
+    <span class="intro-icon">🤰</span>
+    <p class="intro-text">Una invitaci&oacute;n especial</p>
+    <button class="intro-hint" id="openInvite">Toca para abrir 💕</button>
+  </div>
+
+  <!-- Background Blobs -->
+  <div class="bg-blob blob-1" aria-hidden="true"></div>
+  <div class="bg-blob blob-2" aria-hidden="true"></div>
+  <div class="bg-blob blob-3" aria-hidden="true"></div>
+
+  <!-- Floating Hearts -->
+  <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" type="button">&times;</button>
+    <img id="lightboxImg" src="" alt="Foto ampliada" />
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a href="#" class="brand">Alice Madelyn 💕</a>
+      <nav class="nav-links">
+        <a href="#detalles">Detalles</a>
+        <a href="#video">Video</a>
+        <a href="#galeria">Galer&iacute;a</a>
+        <a href="#dedicatoria">Dedicatoria</a>
+        <a href="#confirmar">Confirmar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero container">
+      <div class="hero-badge">
+        <span>🍼</span>
+        <span>Baby Shower</span>
+      </div>
+      <h1>
+        &iexcl;Estamos esperando
+        <span class="highlight">a nuestra beb&eacute;!</span>
+      </h1>
+      <p class="hero-baby-name">Alice Madelyn de la Cruz Romo</p>
+      <p class="hero-parents">
+        Hija de <strong>Yatzari Michel Romo Galicia</strong> &amp; <strong>&Aacute;ngel Giovanni de la Cruz Ortega</strong>
+      </p>
+      <p class="hero-subtitle">
+        Con todo nuestro amor, te invitamos a celebrar la llegada de nuestra peque&ntilde;a tesoro. &iexcl;Ser&aacute; un d&iacute;a lleno de alegr&iacute;a y emociones!
+      </p>
+      <div class="hero-image-wrapper">
+        <img
+          src="hero-lg.jpg"
+          srcset="hero-sm.jpg 400w, hero-md.jpg 800w, hero-lg.jpg 1200w"
+          sizes="(max-width:640px) 400px, (max-width:1024px) 800w, 1200px"
+          alt="Ilustraci&oacute;n del Baby Shower"
+          class="hero-image"
+          loading="eager"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <div class="hero-actions">
+        <a href="#confirmar" class="btn btn-whatsapp">💬 Confirmar por WhatsApp</a>
+        <a href="#detalles" class="btn btn-ghost">📋 Ver detalles</a>
+      </div>
+      <div class="scroll-indicator">
+        <span>Desliza</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">❤️</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Countdown -->
+    <section class="countdown-section container reveal" id="cuenta">
+      <h2 class="countdown-title">Faltan</h2>
+      <p class="countdown-subtitle">para la celebraci&oacute;n</p>
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-days">00</span>
+          <span class="countdown-label">D&iacute;as</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-hours">00</span>
+          <span class="countdown-label">Horas</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-mins">00</span>
+          <span class="countdown-label">Min</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-number" id="cd-secs">00</span>
+          <span class="countdown-label">Seg</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">🎀</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Details -->
+    <section class="details-section container" id="detalles">
+      <h2 class="details-title reveal">Los Detalles</h2>
+      <p class="details-subtitle reveal">todo lo que necesitas saber</p>
+      <div class="details-grid">
+        <article class="detail-card reveal">
+          <span class="detail-icon">📅</span>
+          <p class="detail-label">Fecha</p>
+          <p class="detail-value">15 de Noviembre, 2026</p>
+          <p class="detail-extra">Domingo, 3:00 PM</p>
+        </article>
+        <article class="detail-card reveal">
+          <span class="detail-icon">📍</span>
+          <p class="detail-label">Lugar</p>
+          <p class="detail-value">19&deg;18'19.8&quot;N 98&deg;55'33.4&quot;W</p>
+          <p class="detail-extra"><a href="https://maps.google.com/?q=19.3055,-98.9259" target="_blank" rel="noopener" style="color:var(--pink-deep);font-weight:600;text-decoration:none;">Ver en Google Maps &rarr;</a></p>
+        </article>
+        <article class="detail-card reveal">
+          <span class="detail-icon">🎨</span>
+          <p class="detail-label">Dress Code</p>
+          <p class="detail-value">Tono Pastel</p>
+          <p class="detail-extra">Rosa, lila, celeste o dorado</p>
+        </article>
+        <article class="detail-card reveal">
+          <span class="detail-icon">🎁</span>
+          <p class="detail-label">Sugerencia de Regalos</p>
+          <p class="detail-value">Ropa, Pa&ntilde;ales, Toallitas</p>
+          <p class="detail-extra">Para nuestra princesa Alice Madelyn 💝</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">🎁</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Gift Section -->
+    <section class="gift-section container reveal" id="regalos">
+      <div class="gift-card">
+        <span class="gift-icon">🎀</span>
+        <h2 class="gift-title">Sugerencia de Regalos</h2>
+        <p class="gift-text">
+          Tu presencia es el mejor regalo, pero si deseas consentir a nuestra peque&ntilde;a Alice Madelyn, estas son algunas ideas:
+        </p>
+        <div class="gift-list">
+          <span class="gift-tag">👕 Ropa de beb&eacute;</span>
+          <span class="gift-tag">🧷 Pa&ntilde;ales</span>
+          <span class="gift-tag">🧴 Toallitas h&uacute;medas</span>
+          <span class="gift-tag">🧸 Juguetes suaves</span>
+          <span class="gift-tag">🛁 Productos de ba&ntilde;o</span>
+        </div>
+        <p class="gift-text" style="font-size:0.88rem;margin-top:12px;font-style:italic;color:var(--text-light);">
+          Cualquier detalle ser&aacute; recibido con todo el amor del mundo 💕
+        </p>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">🎬</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Video Section -->
+    <section class="video-section container reveal" id="video">
+      <h2 class="video-title">Los Latidos de Alice</h2>
+      <p class="video-subtitle">Un sonido que cambi&oacute; nuestras vidas</p>
+      <div class="video-wrapper">
+        <video id="babyVideo" preload="metadata" playsinline loop
+          poster="hero-sm.jpg"
+          style="background:var(--pink-light);"
+        >
+          <source src="video_latidos-mobile.mp4" type="video/mp4" />
+          <source src="video_latidos-desktop.mp4" type="video/mp4" />
+          Tu navegador no soporta video.
+        </video>
+        <button class="video-play-btn" id="videoPlayBtn" type="button">▶️</button>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">📸</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Gallery -->
+    <section class="gallery-section container reveal" id="galeria">
+      <h2 class="gallery-title">Momentos Especiales</h2>
+      <p class="gallery-subtitle">nuestros recuerdos favoritos</p>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-full="ilustracion1-lg.jpg">
+          <img
+            src="ilustracion1-sm.jpg"
+            srcset="ilustracion1-sm.jpg 400w, ilustracion1-md.jpg 800w, ilustracion1-lg.jpg 1200w"
+            sizes="(max-width:640px) 400px, (max-width:1024px) 800px, 1200px"
+            alt="Ilustraci&oacute;n de los pap&aacute;s"
+            loading="lazy"
+            onerror="this.parentElement.style.background='linear-gradient(135deg,var(--pink-light),var(--purple-light))'"
+          />
+          <div class="gallery-label">Nuestro amor 💕</div>
+        </div>
+        <div class="gallery-item" data-full="ilustracion2-lg.jpg">
+          <img
+            src="ilustracion2-sm.jpg"
+            srcset="ilustracion2-sm.jpg 400w, ilustracion2-md.jpg 800w, ilustracion2-lg.jpg 1200w"
+            sizes="(max-width:640px) 400px, (max-width:1024px) 800px, 1200px"
+            alt="Ilustraci&oacute;n embarazo"
+            loading="lazy"
+            onerror="this.parentElement.style.background='linear-gradient(135deg,var(--pink-light),var(--purple-light))'"
+          />
+          <div class="gallery-label">Nuestra peque&ntilde;a viene en camino 🤰</div>
+        </div>
+        <div class="gallery-item" data-full="padres1-lg.jpg">
+          <img
+            src="padres1-sm.jpg"
+            srcset="padres1-sm.jpg 400w, padres1-md.jpg 800w, padres1-lg.jpg 1200w"
+            sizes="(max-width:640px) 400px, (max-width:1024px) 800px, 1200px"
+            alt="Foto de los pap&aacute;s"
+            loading="lazy"
+            onerror="this.parentElement.style.background='linear-gradient(135deg,var(--pink-light),var(--purple-light))'"
+          />
+          <div class="gallery-label">Los pap&aacute;s 💑</div>
+        </div>
+        <div class="gallery-item" data-full="padres2-lg.jpg">
+          <img
+            src="padres2-sm.jpg"
+            srcset="padres2-sm.jpg 400w, padres2-md.jpg 800w, padres2-lg.jpg 1200w"
+            sizes="(max-width:640px) 400px, (max-width:1024px) 800px, 1200px"
+            alt="Foto del embarazo"
+            loading="lazy"
+            onerror="this.parentElement.style.background='linear-gradient(135deg,var(--pink-light),var(--purple-light))'"
+          />
+          <div class="gallery-label">Nuestro tesoro creciendo 👣</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">💌</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Dedication Section -->
+    <section class="dedication-section container" id="dedicatoria">
+      <div class="dedication-card reveal">
+        <span class="dedication-icon">📝</span>
+        <h2 class="dedication-title">Dedica unas palabras</h2>
+        <p class="dedication-subtitle">a Yatzari &amp; &Aacute;ngel</p>
+        <textarea
+          class="dedication-textarea"
+          id="dedicationText"
+          placeholder="Escribe aqu&iacute; tus mejores deseos para los pap&aacute;s y la peque&ntilde;a Alice Madelyn... 💕"
+          maxlength="300"
+        ></textarea>
+        <p class="dedication-char-count" id="charCount">0 / 300</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;">
+          <button class="dedication-send-btn" id="dedicationWhatsAppBtn" type="button">
+            💬 Enviar por WhatsApp
+          </button>
+          <button class="dedication-send-btn" id="dedicationSaveBtn" type="button" style="background:linear-gradient(135deg,var(--gold),#b8941e);">
+            💝 Publicar aqu&iacute;
+          </button>
+        </div>
+        <div class="dedication-messages" id="dedicationMessages">
+          <p class="dedication-messages-title">✨ Mensajes para los pap&aacute;s</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">💌</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Message -->
+    <section class="message-section container" id="mensaje">
+      <div class="message-card reveal">
+        <span class="message-icon">💌</span>
+        <h2 class="message-title">Un mensaje especial</h2>
+        <p class="message-text">
+          &laquo;Cada latido nos recuerda que la vida es un milagro. Estamos llenos de gratitud por el amor que nos rodea, y no podemos esperar para compartir este momento tan hermoso contigo. Tu presencia har&aacute; que este d&iacute;a sea a&uacute;n m&aacute;s perfecto.&raquo;
+        </p>
+        <p class="message-signature">Con amor, Yatzari &amp; &Aacute;ngel 💕</p>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">💬</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- WhatsApp RSVP -->
+    <section class="rsvp-section container" id="confirmar">
+      <div class="rsvp-card reveal">
+        <span class="rsvp-icon">🎊</span>
+        <h2 class="rsvp-title">Confirma tu asistencia</h2>
+        <p class="rsvp-subtitle">&iexcl;Nos encantar&iacute;a que est&eacute;s con nosotros!</p>
+        <a
+          class="rsvp-whatsapp-btn"
+          id="rsvpWhatsAppBtn"
+          href="#"
+          target="_blank"
+          rel="noopener"
+        >
+          💬 Confirmar por WhatsApp
+        </a>
+        <p class="rsvp-note">
+          Se abrir&aacute; WhatsApp con tu mensaje de confirmaci&oacute;n listo para enviar
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="container site-footer">
+    <div class="footer-hearts">💕💕💕</div>
+    <p class="footer-text">Hecho con amor para <span class="footer-name">Alice Madelyn de la Cruz Romo</span></p>
+    <p class="footer-text" style="margin-top:6px; font-size:0.72rem;">Pap&aacute;s: Yatzari Michel Romo Galicia &amp; &Aacute;ngel Giovanni de la Cruz Ortega</p>
+    <p class="footer-text" style="margin-top:4px; font-size:0.7rem;">&copy; 2026 &mdash; Todos los corazones reservados 💕</p>
+  </footer>
+
+  <!-- Music Toggle -->
+  <button class="music-toggle" id="musicToggle" title="M&uacute;sica">🔇</button>
+
+  <script>
+    /* ===== INTRO OVERLAY ===== */
+    document.getElementById('openInvite').addEventListener('click', function() {
+      document.getElementById('introOverlay').classList.add('hidden');
+    });
+    setTimeout(function() {
+      var o = document.getElementById('introOverlay');
+      if (o && !o.classList.contains('hidden')) o.classList.add('hidden');
+    }, 4000);
+
+    /* ===== FLOATING HEARTS ===== */
+    (function() {
+      var c = document.getElementById('floatingHearts');
+      var h = ['💕','💗','💖','🌸','✨','🦋','🎀','💫','💝','🍼'];
+      for (var i = 0; i < 16; i++) {
+        var s = document.createElement('span');
+        s.className = 'heart';
+        s.textContent = h[Math.floor(Math.random()*h.length)];
+        s.style.left = Math.random()*100+'%';
+        s.style.fontSize = (10+Math.random()*16)+'px';
+        s.style.animationDuration = (7+Math.random()*11)+'s';
+        s.style.animationDelay = Math.random()*9+'s';
+        c.appendChild(s);
+      }
+    })();
+
+    /* ===== SPARKLE CURSOR (desktop only) ===== */
+    if (window.matchMedia('(hover:hover)').matches) {
+      var lastS = 0;
+      document.addEventListener('mousemove', function(e) {
+        var n = Date.now();
+        if (n - lastS < 80) return;
+        lastS = n;
+        var sp = document.createElement('div');
+        sp.className = 'sparkle';
+        sp.style.left = e.clientX+'px';
+        sp.style.top = e.clientY+'px';
+        document.body.appendChild(sp);
+        setTimeout(function() { sp.remove(); }, 800);
+      });
+    }
+
+    /* ===== SCROLL HEADER ===== */
+    window.addEventListener('scroll', function() {
+      var h = document.getElementById('siteHeader');
+      if (window.scrollY > 50) h.classList.add('scrolled');
+      else h.classList.remove('scrolled');
+    });
+
+    /* ===== REVEAL ON SCROLL ===== */
+    var revEls = document.querySelectorAll('.reveal');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) {
+        if (en.isIntersecting) en.target.classList.add('visible');
+      });
+    }, { threshold:0.08, rootMargin:'0px 0px -30px 0px' });
+    revEls.forEach(function(el) { obs.observe(el); });
+
+    /* ===== COUNTDOWN ===== */
+    var evDate = new Date('2026-11-15T15:00:00').getTime();
+    function updateCD() {
+      var now = Date.now();
+      var d = evDate - now;
+      if (d <= 0) {
+        document.getElementById('cd-days').textContent = '🎉';
+        document.getElementById('cd-hours').textContent = '¡';
+        document.getElementById('cd-mins').textContent = 'Hoy';
+        document.getElementById('cd-secs').textContent = '!';
+        return;
+      }
+      var dy = Math.floor(d/(864e5));
+      var hr = Math.floor((d%864e5)/36e5);
+      var mn = Math.floor((d%36e5)/6e4);
+      var sc = Math.floor((d%6e4)/1e3);
+      document.getElementById('cd-days').textContent = String(dy).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(hr).padStart(2,'0');
+      document.getElementById('cd-mins').textContent = String(mn).padStart(2,'0');
+      document.getElementById('cd-secs').textContent = String(sc).padStart(2,'0');
+    }
+    updateCD();
+    setInterval(updateCD, 1000);
+
+    /* ===== VIDEO PLAY ===== */
+    var vid = document.getElementById('babyVideo');
+    var playBtn = document.getElementById('videoPlayBtn');
+    playBtn.addEventListener('click', function() {
+      vid.play();
+      vid.muted = false;
+      playBtn.classList.add('hidden');
+    });
+    vid.addEventListener('click', function() {
+      if (vid.paused) { vid.play(); playBtn.classList.add('hidden'); }
+      else { vid.pause(); playBtn.classList.remove('hidden'); }
+    });
+    vid.addEventListener('ended', function() {
+      playBtn.classList.remove('hidden');
+    });
+
+    /* ===== LIGHTBOX ===== */
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var lightboxClose = document.getElementById('lightboxClose');
+    document.querySelectorAll('.gallery-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        lightboxImg.src = item.getAttribute('data-full');
+        lightbox.classList.add('active');
+      });
+    });
+    lightbox.addEventListener('click', function() { lightbox.classList.remove('active'); });
+    lightboxClose.addEventListener('click', function() { lightbox.classList.remove('active'); });
+
+    /* ===== WHATSAPP RSVP ===== */
+    var rsvpBtn = document.getElementById('rsvpWhatsAppBtn');
+    rsvpBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var hostNumber = '5656168851';
+      var msg = '💕 *Confirmaci\u00f3n de asistencia - Baby Shower*\n\n';
+      msg += '🤰 Beb\u00e9: Alice Madelyn de la Cruz Romo\n';
+      msg += '📅 Fecha: 15 de Noviembre 2026, 3:00 PM\n\n';
+      msg += '✅ *Confirmo mi asistencia*\n\n';
+      msg += '¡Nos vemos ah\u00ed! 🎊';
+      var waURL = 'https://wa.me/' + hostNumber + '?text=' + encodeURIComponent(msg);
+      window.open(waURL, '_blank');
+
+      // Confetti
+      for (var i = 0; i < 30; i++) {
+        (function(i) {
+          var c = document.createElement('div');
+          var cols = ['#f4c2c2','#ce93d8','#d4af37','#81c784','#25D366'];
+          c.style.cssText = 'position:fixed;left:50%;top:50%;width:8px;height:8px;'
+            +'border-radius:'+(Math.random()>0.5?'50%':'2px')+';'
+            +'background:'+cols[Math.floor(Math.random()*5)]+';'
+            +'z-index:9999;pointer-events:none;'
+            +'animation:confettiBurst 1s ease-out forwards;'
+            +'--x:'+((Math.random()-0.5)*360)+'px;'
+            +'--y:'+((Math.random()-0.5)*360)+'px;'
+            +'--r:'+(Math.random()*720)+'deg;';
+          document.body.appendChild(c);
+          setTimeout(function(){c.remove();},1200);
+        })(i);
+      }
+    });
+
+    /* ===== DEDICATION SECTION ===== */
+    var dedicationText = document.getElementById('dedicationText');
+    var charCount = document.getElementById('charCount');
+    var dedicationWhatsAppBtn = document.getElementById('dedicationWhatsAppBtn');
+    var dedicationSaveBtn = document.getElementById('dedicationSaveBtn');
+    var dedicationMessages = document.getElementById('dedicationMessages');
+
+    dedicationText.addEventListener('input', function() {
+      charCount.textContent = dedicationText.value.length + ' / 300';
+    });
+
+    dedicationWhatsAppBtn.addEventListener('click', function() {
+      var text = dedicationText.value.trim();
+      if (!text) { dedicationText.focus(); return; }
+      var hostNumber = '5656168851';
+      var msg = '💌 *Dedicatoria para los pap\u00e1s*\n\n';
+      msg += text + '\n\n';
+      msg += '💕 Para Yatzari & \u00c1ngel — Baby Shower de Alice Madelyn 💕';
+      var waURL = 'https://wa.me/' + hostNumber + '?text=' + encodeURIComponent(msg);
+      window.open(waURL, '_blank');
+    });
+
+    dedicationSaveBtn.addEventListener('click', function() {
+      var text = dedicationText.value.trim();
+      if (!text) { dedicationText.focus(); return; }
+
+      var name = 'Un invitado';
+      try {
+        var stored = JSON.parse(localStorage.getItem('dedications_alice') || '[]');
+        if (stored.length > 0) { name = stored[stored.length - 1].name || name; }
+      } catch(e) {}
+
+      // Simple name prompt inline
+      var bubble = document.createElement('div');
+      bubble.className = 'dedication-bubble';
+      var now = new Date();
+      var timeStr = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+      bubble.innerHTML = '<p class="dedication-bubble-author">💕 Un invitado</p>'
+        + '<p class="dedication-bubble-text">' + text.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</p>'
+        + '<p class="dedication-bubble-time">' + timeStr + '</p>';
+      dedicationMessages.appendChild(bubble);
+      dedicationText.value = '';
+      charCount.textContent = '0 / 300';
+
+      // Confetti mini
+      for (var i = 0; i < 12; i++) {
+        (function(i) {
+          var c = document.createElement('div');
+          var cols = ['#f4c2c2','#ce93d8','#d4af37','#81c784','#25D366'];
+          c.style.cssText = 'position:fixed;left:50%;top:60%;width:6px;height:6px;'
+            +'border-radius:50%;'
+            +'background:'+cols[Math.floor(Math.random()*5)]+';'
+            +'z-index:9999;pointer-events:none;'
+            +'animation:confettiBurst 0.8s ease-out forwards;'
+            +'--x:'+((Math.random()-0.5)*200)+'px;'
+            +'--y:'+((Math.random()-0.5)*200)+'px;'
+            +'--r:'+(Math.random()*360)+'deg;';
+          document.body.appendChild(c);
+          setTimeout(function(){c.remove();},1000);
+        })(i);
+      }
+    });
+
+    /* ===== MUSIC TOGGLE ===== */
+    var mBtn = document.getElementById('musicToggle');
+    var mPlaying = false;
+    mBtn.addEventListener('click', function() {
+      mPlaying = !mPlaying;
+      mBtn.textContent = mPlaying ? '🎵' : '🔇';
+      mBtn.classList.toggle('playing', mPlaying);
+    });
+  </script>
+</body>
+</html>

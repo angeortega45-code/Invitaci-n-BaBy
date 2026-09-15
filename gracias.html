@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gracias - Baby Shower Alice Madelyn</title>
+  <title>Gracias 💕 Baby Shower Alice Madelyn</title>
   <meta name="description" content="Tarjeta de agradecimiento - Baby Shower de Alice Madelyn de la Cruz Romo" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,6 +36,7 @@
       line-height:1.7;
       min-height:100vh;
       display:flex;
+      flex-direction:column;
       align-items:center;
       justify-content:center;
     }
@@ -70,13 +71,35 @@
       100% { transform:translateY(-10vh) rotate(360deg) scale(1.1); opacity:0; }
     }
 
-    /* ===== CARD ===== */
+    /* ===== SPARKLE CURSOR ===== */
+    .sparkle {
+      position:fixed; width:6px; height:6px; border-radius:50%;
+      background:var(--gold); pointer-events:none; z-index:9999;
+      animation:sparkleFade 0.8s ease-out forwards;
+    }
+    @keyframes sparkleFade {
+      0%   { transform:scale(1); opacity:0.8; }
+      100% { transform:scale(0); opacity:0; }
+    }
+
+    /* ===== CARD CONTAINER ===== */
+    .card-wrapper {
+      width:100%; max-width:560px; padding:20px;
+      position:relative; z-index:1;
+    }
+
+    /* ===== THANK YOU CARD ===== */
     .thank-you-card {
-      background:rgba(255,255,255,0.7); backdrop-filter:blur(20px);
+      background:rgba(255,255,255,0.72); backdrop-filter:blur(20px);
       border:1px solid rgba(228,160,180,0.25); border-radius:32px;
-      padding:56px 40px; max-width:520px; width:90%; margin:20px auto;
+      padding:52px 40px;
       box-shadow:0 16px 60px rgba(228,160,180,0.2);
       text-align:center; position:relative; overflow:hidden;
+      animation:cardEnter 1s ease-out;
+    }
+    @keyframes cardEnter {
+      0%   { transform:translateY(30px) scale(0.97); opacity:0; }
+      100% { transform:translateY(0) scale(1); opacity:1; }
     }
     .thank-you-card::before {
       content:''; position:absolute; top:0; left:0; right:0; height:5px;
@@ -89,9 +112,9 @@
 
     /* ===== SPARKLE RING ===== */
     .sparkle-ring {
-      position:absolute; top:50%; left:50%; width:300px; height:300px;
+      position:absolute; top:50%; left:50%; width:320px; height:320px;
       transform:translate(-50%,-50%); border-radius:50%;
-      border:2px dashed rgba(212,175,55,0.15);
+      border:2px dashed rgba(212,175,55,0.12);
       animation:sparkleSpin 30s linear infinite; pointer-events:none;
     }
     .sparkle-ring::before, .sparkle-ring::after {
@@ -102,20 +125,36 @@
     @keyframes sparkleSpin { from{transform:translate(-50%,-50%) rotate(0deg);} to{transform:translate(-50%,-50%) rotate(360deg);} }
 
     /* ===== CONTENT ===== */
-    .card-icon { font-size:3.5rem; margin-bottom:20px; display:block; animation:bounce 2s ease-in-out infinite; }
+    .card-emoji-top { font-size:2.4rem; margin-bottom:8px; display:block; animation:bounce 2s ease-in-out infinite; }
     @keyframes bounce { 0%,100%{transform:scale(1);} 50%{transform:scale(1.1);} }
 
+    .card-icon-ring {
+      width:100px; height:100px; border-radius:50%; margin:0 auto 24px;
+      background:linear-gradient(135deg,var(--pink-light),var(--purple-light));
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 8px 30px rgba(228,160,180,0.3);
+      animation:ringPulse 3s ease-in-out infinite;
+    }
+    @keyframes ringPulse { 0%,100%{box-shadow:0 8px 30px rgba(228,160,180,0.3);} 50%{box-shadow:0 12px 40px rgba(228,160,180,0.5);} }
+    .card-icon-ring span { font-size:3.2rem; }
+
     .card-title {
-      font-family:'Great Vibes',cursive; font-size:2.8rem;
-      color:var(--pink-deep); margin-bottom:8px; line-height:1.2;
+      font-family:'Great Vibes',cursive; font-size:3rem;
+      color:var(--pink-deep); margin-bottom:6px; line-height:1.2;
     }
     .card-subtitle {
-      font-family:'Playfair Display',serif; font-size:1.3rem;
+      font-family:'Playfair Display',serif; font-size:1.15rem;
       color:var(--text-dark); margin-bottom:28px; font-weight:600;
     }
 
+    .card-divider {
+      width:80px; height:2px; margin:0 auto 28px;
+      background:linear-gradient(90deg,transparent,var(--pink-deep),var(--gold),var(--pink-deep),transparent);
+      border-radius:2px;
+    }
+
     .card-message {
-      font-size:1.02rem; color:var(--text-medium); line-height:2;
+      font-size:1rem; color:var(--text-medium); line-height:2;
       margin-bottom:24px; font-style:italic;
     }
     .card-message strong {
@@ -124,13 +163,17 @@
 
     .card-baby-name {
       font-family:'Great Vibes',cursive; font-size:2rem;
-      color:var(--purple); margin-bottom:20px;
+      color:var(--purple); margin-bottom:8px;
+    }
+    .card-baby-sub {
+      font-size:0.82rem; color:var(--text-light); margin-bottom:24px; font-style:italic;
     }
 
     .card-parents {
       font-size:0.92rem; color:var(--text-medium); font-weight:500;
-      margin-bottom:28px; line-height:1.6;
+      margin-bottom:24px; line-height:1.6;
     }
+    .card-parents strong { color:var(--text-dark); }
 
     .card-hearts {
       font-size:1.6rem; letter-spacing:6px; color:var(--pink-deep);
@@ -138,41 +181,72 @@
     }
     @keyframes heartbeat { 0%,100%{transform:scale(1);} 25%{transform:scale(1.15);} 40%{transform:scale(1);} 60%{transform:scale(1.1);} }
 
-    .card-divider {
-      width:80px; height:2px; margin:0 auto 24px;
-      background:linear-gradient(90deg,transparent,var(--pink-deep),var(--gold),var(--pink-deep),transparent);
-      border-radius:2px;
+    .card-quote {
+      font-family:'Playfair Display',serif; font-style:italic;
+      font-size:0.92rem; color:var(--text-light); line-height:1.8;
+      margin:20px 0; padding:0 16px;
+    }
+    .card-quote::before, .card-quote::after {
+      content:'"'; font-size:1.4rem; color:var(--pink-deep); vertical-align:sub;
     }
 
     .card-footer {
-      font-size:0.78rem; color:var(--text-light); font-weight:500;
-      line-height:1.6;
+      font-size:0.78rem; color:var(--text-light); font-weight:500; line-height:1.6;
     }
     .card-footer .date {
       font-family:'Playfair Display',serif; font-weight:600; color:var(--text-medium);
     }
 
-    /* ===== SHARE BUTTON ===== */
-    .share-btn {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:12px 28px; border-radius:50px;
-      background:linear-gradient(135deg,var(--pink-deep),var(--purple));
-      color:white; font-weight:700; font-size:0.88rem;
-      text-decoration:none; cursor:pointer; border:none;
-      box-shadow:0 4px 20px rgba(228,160,180,0.4);
-      transition:all 0.4s ease; font-family:'Quicksand',sans-serif;
-      margin-top:20px;
+    /* ===== BUTTONS ===== */
+    .btn-row {
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:28px;
     }
-    .share-btn:hover {
-      transform:translateY(-2px); box-shadow:0 8px 30px rgba(228,160,180,0.5);
+    .btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:13px 26px; border-radius:50px; font-weight:700;
+      font-size:0.88rem; text-decoration:none; cursor:pointer; border:none;
+      transition:all 0.4s ease; font-family:'Quicksand',sans-serif;
+    }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-pink {
+      background:linear-gradient(135deg,var(--pink-deep),var(--purple));
+      color:white; box-shadow:0 4px 20px rgba(228,160,180,0.4);
+    }
+    .btn-pink:hover { box-shadow:0 8px 30px rgba(228,160,180,0.5); }
+    .btn-whatsapp {
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      color:white; box-shadow:0 4px 20px rgba(37,211,102,0.35);
+    }
+    .btn-whatsapp:hover { box-shadow:0 8px 30px rgba(37,211,102,0.45); }
+    .btn-gold {
+      background:linear-gradient(135deg,var(--gold),#b8941e);
+      color:white; box-shadow:0 4px 20px rgba(212,175,55,0.35);
+    }
+    .btn-gold:hover { box-shadow:0 8px 30px rgba(212,175,55,0.45); }
+
+    /* ===== PHOTO FRAME ===== */
+    .photo-frame {
+      width:180px; height:180px; border-radius:50%; margin:0 auto 24px;
+      border:4px solid rgba(212,175,55,0.3); overflow:hidden;
+      box-shadow:0 8px 30px rgba(228,160,180,0.25);
+      background:linear-gradient(135deg,var(--pink-light),var(--purple-light));
+      display:flex; align-items:center; justify-content:center;
+    }
+    .photo-frame img {
+      width:100%; height:100%; object-fit:cover;
+    }
+    .photo-frame .placeholder-icon {
+      font-size:4rem;
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width:640px) {
-      .thank-you-card { padding:36px 24px; }
-      .card-title { font-size:2.2rem; }
-      .card-baby-name { font-size:1.6rem; }
+      .thank-you-card { padding:36px 22px; }
+      .card-title { font-size:2.3rem; }
+      .card-baby-name { font-size:1.5rem; }
       .card-message { font-size:0.92rem; }
+      .photo-frame { width:140px; height:140px; }
+      .btn { padding:11px 22px; font-size:0.82rem; }
     }
   </style>
 </head>
@@ -187,77 +261,161 @@
   <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
 
   <!-- Thank You Card -->
-  <div class="thank-you-card">
-    <div class="sparkle-ring" aria-hidden="true"></div>
+  <div class="card-wrapper">
+    <div class="thank-you-card">
+      <div class="sparkle-ring" aria-hidden="true"></div>
 
-    <span class="card-icon">👶💕</span>
-    <h1 class="card-title">¡Gracias!</h1>
-    <p class="card-subtitle">por ser parte de este momento tan especial</p>
+      <!-- Photo Frame -->
+      <div class="photo-frame">
+        <span class="placeholder-icon">👶🎀</span>
+      </div>
 
-    <div class="card-divider"></div>
+      <h1 class="card-title">¡Gracias!</h1>
+      <p class="card-subtitle">por hacer de este día algo inolvidable</p>
 
-    <p class="card-message">
-      Tu presencia, tu cariño y cada uno de tus buenos deseos hicieron de este día algo verdaderamente inolvidable.
-      <strong>Alice Madelyn</strong> ya siente todo el amor con el que la recibiste, y nosotros también.
-    </p>
+      <div class="card-divider"></div>
 
-    <p class="card-baby-name">Alice Madelyn de la Cruz Romo</p>
+      <p class="card-message">
+        Tu presencia, tu cariño y cada uno de tus buenos deseos llenaron nuestros corazones de la alegría más pura.
+        <strong>Alice Madelyn</strong> ya siente todo el amor con el que la recibiste, y eso es el mejor regalo que nos podías dar 💕
+      </p>
 
-    <p class="card-parents">
-      Con todo nuestro amor,<br/>
-      <strong>Yatzari Michel Romo Galicia</strong> &amp; <strong>Ángel Giovanni de la Cruz Ortega</strong>
-    </p>
+      <p class="card-baby-name">Alice Madelyn de la Cruz Romo</p>
+      <p class="card-baby-sub">nuestra pequeña gran bendición 🍼✨</p>
 
-    <div class="card-hearts">💕💕💕</div>
+      <div class="card-hearts">💕💕💕</div>
 
-    <div class="card-divider"></div>
+      <div class="card-divider"></div>
 
-    <p class="card-footer">
-      <span class="date">15 de Noviembre, 2026</span><br/>
-      Baby Shower — Un día que guardaremos para siempre en nuestros corazones 💕
-    </p>
+      <p class="card-parents">
+        Con todo nuestro amor y gratitud,<br/>
+        <strong>Yatzari Michel Romo Galicia</strong> & <strong>Ángel Giovanni de la Cruz Ortega</strong>
+      </p>
 
-    <button class="share-btn" id="shareBtn" type="button">
-      📤 Comprimir y compartir
-    </button>
+      <p class="card-quote">
+        Cada latido nos recuerda que la vida es un milagro. Gracias por ser parte del nuestro.
+      </p>
+
+      <div class="card-divider"></div>
+
+      <p class="card-footer">
+        <span class="date">15 de noviembre, 2026</span><br/>
+        Baby Shower — Un día que guardaremos para siempre en nuestros corazones 💕
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="btn-row">
+        <button class="btn btn-whatsapp" id="thankYouWhatsAppBtn" type="button">
+          💬 Enviar agradecimiento
+        </button>
+        <button class="btn btn-pink" id="shareThankYouBtn" type="button">
+          📤 Compartir
+        </button>
+      </div>
+
+      <div class="btn-row" style="margin-top:12px;">
+        <a class="btn btn-gold" href="https://angeortega45-code.github.io/Invitaci-n-BaBy/" target="_blank" rel="noopener">
+          🍼 Ver invitación
+        </a>
+      </div>
+    </div>
   </div>
 
   <script>
     /* ===== FLOATING HEARTS ===== */
     (function() {
       var c = document.getElementById('floatingHearts');
-      var h = ['💕','💗','💖','🌸','✨','🦋','🎀','💫','💝','🍼'];
-      for (var i = 0; i < 12; i++) {
+      var h = ['💕','💗','💖','🌸','✨','🦋','🎀','💫','💝','🍼','🎀','🌺'];
+      for (var i = 0; i < 18; i++) {
         var s = document.createElement('span');
         s.className = 'heart';
         s.textContent = h[Math.floor(Math.random()*h.length)];
         s.style.left = Math.random()*100+'%';
-        s.style.fontSize = (10+Math.random()*14)+'px';
-        s.style.animationDuration = (8+Math.random()*12)+'s';
+        s.style.fontSize = (10+Math.random()*16)+'px';
+        s.style.animationDuration = (8+Math.random()*14)+'s';
         s.style.animationDelay = Math.random()*10+'s';
         c.appendChild(s);
       }
     })();
 
+    /* ===== SPARKLE CURSOR (desktop) ===== */
+    if (window.matchMedia('(hover:hover)').matches) {
+      var lastS = 0;
+      document.addEventListener('mousemove', function(e) {
+        var n = Date.now();
+        if (n - lastS < 90) return;
+        lastS = n;
+        var sp = document.createElement('div');
+        sp.className = 'sparkle';
+        sp.style.left = e.clientX+'px';
+        sp.style.top = e.clientY+'px';
+        document.body.appendChild(sp);
+        setTimeout(function(){ sp.remove(); }, 800);
+      });
+    }
+
+    /* ===== WHATSAPP THANK YOU ===== */
+    document.getElementById('thankYouWhatsAppBtn').addEventListener('click', function() {
+      var hostNumber = '5656168851';
+      var msg = '🌻✨ *¡Gracias por acompañarnos!* ✨🌻\n\n';
+      msg += 'Queremos agradecerte de corazón por haber estado con nosotros en el Baby Shower de nuestra pequeña Alice Madelyn 🍼💕\n\n';
+      msg += '🤱 Tu presencia hizo que este día fuera verdaderamente inolvidable.\n';
+      msg += '🎁 Cada detalle, cada sonrisa y cada abrazo se quedará grabado en nuestros corazones.\n\n';
+      msg += '💐 Alice ya siente todo el amor que le diste, y eso es lo más hermoso que nos podías regalar.\n\n';
+      msg += '💕 Con infinita gratitud,\n';
+      msg += '👩 Yatzari Michel Romo Galicia\n';
+      msg += '👨 Ángel Giovanni de la Cruz Ortega\n\n';
+      msg += '🥰 ¡Nos vemos pronto!';
+      var waURL = 'https://wa.me/' + hostNumber + '?text=' + encodeURIComponent(msg);
+      window.open(waURL, '_blank');
+    });
+
     /* ===== SHARE BUTTON ===== */
-    document.getElementById('shareBtn').addEventListener('click', function() {
+    document.getElementById('shareThankYouBtn').addEventListener('click', function() {
+      var cardURL = window.location.href;
+      var shareText = '💕 ¡Gracias por acompañarnos al Baby Shower de Alice Madelyn de la Cruz Romo! 🍼\n\n' +
+        'Tu presencia hizo de este día algo inolvidable ✨\n' +
+        '👉 Mira la tarjeta de agradecimiento:\n' + cardURL;
       if (navigator.share) {
         navigator.share({
-          title: 'Gracias - Baby Shower Alice Madelyn',
-          text: '¡Gracias por ser parte del Baby Shower de Alice Madelyn de la Cruz Romo! 💕',
-          url: window.location.href
+          title: 'Gracias — Baby Shower Alice Madelyn',
+          text: shareText,
+          url: cardURL
         }).catch(function(){});
       } else {
-        // Fallback: copy URL
-        var temp = document.createElement('textarea');
-        temp.value = window.location.href;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand('copy');
-        document.body.removeChild(temp);
-        alert('¡Enlace copiado! Pégalo para compartir 💕');
+        var waShareURL = 'https://wa.me/?text=' + encodeURIComponent(shareText);
+        window.open(waShareURL, '_blank');
       }
     });
+
+    /* ===== MINI CONFETTI ON LOAD ===== */
+    (function() {
+      setTimeout(function() {
+        for (var i = 0; i < 25; i++) {
+          (function(i) {
+            var c = document.createElement('div');
+            var cols = ['#f4c2c2','#ce93d8','#d4af37','#81c784','#e8a0b4'];
+            c.style.cssText = 'position:fixed;left:'+(Math.random()*100)+'%;top:50%;width:8px;height:8px;'
+              +'border-radius:'+(Math.random()>0.5?'50%':'2px')+';'
+              +'background:'+cols[Math.floor(Math.random()*5)]+';'
+              +'z-index:9999;pointer-events:none;'
+              +'animation:confettiBurst 1.2s ease-out forwards;'
+              +'--x:'+((Math.random()-0.5)*400)+'px;'
+              +'--y:'+((Math.random()-0.5)*400)+'px;'
+              +'--r:'+(Math.random()*720)+'deg;';
+            document.body.appendChild(c);
+            setTimeout(function(){c.remove();},1500);
+          })(i);
+        }
+      }, 600);
+    })();
   </script>
+
+  <style>
+    @keyframes confettiBurst {
+      0%   { transform:translate(0,0) rotate(0deg) scale(1); opacity:1; }
+      100% { transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(0); opacity:0; }
+    }
+  </style>
 </body>
 </html>

@@ -543,6 +543,8 @@
     .site-footer { padding:40px 0; text-align:center; }
     .footer-hearts { font-size:1.6rem; letter-spacing:6px; color:var(--pink-deep); margin-bottom:12px; animation:heartbeat 2s ease-in-out infinite; }
     .footer-text { font-size:0.85rem; color:var(--text-medium); line-height:1.7; }
+    .footer-link { display:inline-block; margin-top:10px; font-size:0.82rem; color:var(--pink-deep); text-decoration:none; font-weight:600; transition:color 0.3s; }
+    .footer-link:hover { color:var(--purple); }
     .footer-name { font-family:'Great Vibes',cursive; font-size:1.1rem; color:var(--pink-deep); }
 
     /* ===== MUSIC TOGGLE ===== */
@@ -901,6 +903,7 @@
     <div class="footer-hearts">💕💕💕</div>
     <p class="footer-text">Hecho con amor para <span class="footer-name">Alice Madelyn de la Cruz Romo</span></p>
     <p class="footer-text" style="margin-top:6px; font-size:0.72rem;">Pap&aacute;s: Yatzari Michel Romo Galicia &amp; &Aacute;ngel Giovanni de la Cruz Ortega</p>
+    <a href="gracias.html" class="footer-link">💌 Tarjeta de agradecimiento</a>
     <p class="footer-text" style="margin-top:4px; font-size:0.7rem;">&copy; 2026 &mdash; Todos los corazones reservados</p>
   </footer>
 
@@ -1132,10 +1135,12 @@
     rsvpBtn.addEventListener('click', function(e) {
       e.preventDefault();
       var hostNumber = '5656168851';
-      var msg = '💕 *Baby Shower — Alice Madelyn de la Cruz Romo*\n\n';
-      msg += '✅ ¡Confirmo mi asistencia!\n\n';
-      msg += '📅 15 de noviembre 2026 · 3:00 PM\n';
-      msg += '🍼 Nos vemos ahí, ¡falta menos! 🎊';
+      var msg = '🎀✨ *¡Baby Shower!* ✨🎀\n\n';
+      msg += '👶 💕 Alice Madelyn de la Cruz Romo 💕 👶\n\n';
+      msg += '✅ ¡Confirmo mi asistencia con mucho gusto! 🎉\n\n';
+      msg += '📅 Domingo 15 de noviembre 2026\n';
+      msg += '🕐 3:00 PM\n';
+      msg += '🍼 ¡Nos vemos ahí, falta menos! 🥳🎊';
       var waURL = 'https://wa.me/' + hostNumber + '?text=' + encodeURIComponent(msg);
       window.open(waURL, '_blank');
       confetti();
@@ -1144,12 +1149,17 @@
     /* ===== COMPARTIR INVITACIÓN ===== */
     document.getElementById('shareInviteBtn').addEventListener('click', function() {
       var inviteURL = 'https://angeortega45-code.github.io/Invitaci-n-BaBy/';
-      var shareText = '🍼 ¡Estás invitad@ al Baby Shower de Alice Madelyn de la Cruz Romo! 💕\n\n' +
-        '📅 15 de noviembre 2026 · 3:00 PM\n' +
-        '👉 Mira la invitación completa aquí:\n' + inviteURL;
+      var shareText = '🎀✨ ¡Estás invitad@ al Baby Shower! ✨🎀\n\n' +
+        '👶 💕 Alice Madelyn de la Cruz Romo 💕 👶\n\n' +
+        '📅 Domingo 15 de noviembre 2026\n' +
+        '🕐 3:00 PM\n' +
+        '🎨 Dress code: Tono pastel 🌸\n\n' +
+        '👉 Mira la invitación completa aquí:\n' + inviteURL + '\n\n' +
+        '💬 Confirma por WhatsApp: 5656168851\n' +
+        '🎉 ¡Te esperamos! 💕';
       if (navigator.share) {
         navigator.share({
-          title: 'Baby Shower — Alice Madelyn',
+          title: '🎀 Baby Shower — Alice Madelyn',
           text: shareText,
           url: inviteURL
         }).catch(function() {});

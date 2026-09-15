@@ -490,6 +490,23 @@
       transform:translateY(-3px) scale(1.03);
       box-shadow:0 10px 40px rgba(37,211,102,0.5);
     }
+    .rsvp-image-btn {
+      display:block; cursor:pointer;
+      transition:all 0.4s ease; text-decoration:none;
+      max-width:420px; margin:0 auto;
+    }
+    .rsvp-image-btn:hover {
+      transform:translateY(-3px) scale(1.02);
+      box-shadow:0 10px 35px rgba(228,160,180,0.4);
+    }
+    .rsvp-image-btn img {
+      width:100%; height:auto; border-radius:16px;
+      box-shadow:0 6px 28px rgba(228,160,180,0.3);
+      transition:box-shadow 0.4s ease;
+    }
+    .rsvp-image-btn:hover img {
+      box-shadow:0 12px 40px rgba(228,160,180,0.45);
+    }
     .rsvp-note {
       font-size:0.78rem; color:var(--text-light); margin-top:14px;
       font-style:italic;
@@ -878,16 +895,16 @@
         <h2 class="rsvp-title">Confirma tu asistencia</h2>
         <p class="rsvp-subtitle">&iexcl;Nos encantar&iacute;a contar contigo en este d&iacute;a tan especial!</p>
         <a
-          class="rsvp-whatsapp-btn"
+          class="rsvp-image-btn"
           id="rsvpWhatsAppBtn"
           href="#"
           target="_blank"
           rel="noopener"
         >
-          &nbsp;&nbsp;Confirmar por WhatsApp
+          <img src="confirmar-whatsapp.png" alt="Confirmar asistencia por WhatsApp" />
         </a>
         <p class="rsvp-note">
-          Se abrir&aacute; WhatsApp con tu mensaje listo para enviar
+          Toca la imagen para confirmar por WhatsApp
         </p>
         <div class="rsvp-share-row">
           <button class="rsvp-share-btn" id="shareInviteBtn" type="button">

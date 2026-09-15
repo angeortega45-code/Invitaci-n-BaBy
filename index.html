@@ -494,34 +494,24 @@
       font-size:0.78rem; color:var(--text-light); margin-top:14px;
       font-style:italic;
     }
-
-    /* ===== FOLLOW-UP SECTION ===== */
-    .followup-section { padding:50px 0; text-align:center; }
-    .followup-card {
-      background:rgba(255,255,255,0.65); backdrop-filter:blur(14px);
-      border:1px solid rgba(206,147,216,0.2); border-radius:24px;
-      padding:44px 32px; max-width:580px; margin:0 auto;
-      box-shadow:var(--shadow-card); position:relative; overflow:hidden;
+    .rsvp-share-row {
+      display:flex; justify-content:center; margin-top:20px;
     }
-    .followup-card::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:3px;
-      background:linear-gradient(90deg,var(--purple),var(--pink-deep),var(--gold));
-    }
-    .followup-icon { font-size:2.2rem; margin-bottom:12px; display:block; }
-    .followup-title { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--text-dark); margin-bottom:10px; }
-    .followup-text { font-size:0.93rem; color:var(--text-medium); line-height:1.9; margin-bottom:18px; }
-    .followup-whatsapp-btn {
+    .rsvp-share-btn {
       display:inline-flex; align-items:center; gap:8px;
-      padding:14px 32px; border-radius:50px;
-      background:linear-gradient(135deg,#25D366,#128C7E);
-      color:white; font-weight:700; font-size:0.92rem;
+      padding:12px 28px; border-radius:50px;
+      background:linear-gradient(135deg,var(--purple),var(--pink-deep));
+      color:white; font-weight:600; font-size:0.9rem;
       text-decoration:none; border:none; cursor:pointer;
-      box-shadow:0 4px 20px rgba(37,211,102,0.35);
+      box-shadow:0 4px 18px rgba(171,71,188,0.35);
       transition:all 0.4s ease; font-family:'Quicksand',sans-serif;
     }
-    .followup-whatsapp-btn:hover {
-      transform:translateY(-2px); box-shadow:0 8px 30px rgba(37,211,102,0.45);
+    .rsvp-share-btn:hover {
+      transform:translateY(-2px) scale(1.03);
+      box-shadow:0 8px 28px rgba(171,71,188,0.5);
     }
+
+
 
     /* ===== LIGHTBOX ===== */
     .lightbox {
@@ -875,39 +865,16 @@
     <!-- Divider -->
     <div class="section-divider">
       <div class="divider-line"></div>
-      <span class="divider-icon">💬</span>
-      <div class="divider-line"></div>
-    </div>
-
-    <!-- Follow-up Section -->
-    <section class="followup-section container" id="seguimiento">
-      <div class="followup-card reveal">
-        <span class="followup-icon">📲</span>
-        <h2 class="followup-title">&iquest;A&uacute;n no confirmas?</h2>
-        <p class="followup-text">
-          Sabemos que la vida es ocupada, pero nos encantar&iacute;a contar con tu presencia en este d&iacute;a tan especial para nuestra familia.
-          Si a&uacute;n no has confirmado, no te preocupes &mdash; &iexcl;a&uacute;n est&aacute;s a tiempo!<br/><br/>
-          Solo env&iacute;anos un mensaje por WhatsApp y nos har&aacute;s muy felices. &iexcl;Cada persona que nos acompa&ntilde;e har&aacute; que la celebraci&oacute;n sea a&uacute;n m&aacute;s hermosa!
-        </p>
-        <button class="followup-whatsapp-btn" id="followupWhatsAppBtn" type="button">
-          &nbsp;&nbsp;Confirmar ahora por WhatsApp
-        </button>
-      </div>
-    </section>
-
-    <!-- Divider -->
-    <div class="section-divider">
-      <div class="divider-line"></div>
       <span class="divider-icon">🎊</span>
       <div class="divider-line"></div>
     </div>
 
-    <!-- WhatsApp RSVP -->
+    <!-- WhatsApp RSVP (única sección) -->
     <section class="rsvp-section container" id="confirmar">
       <div class="rsvp-card reveal">
         <span class="rsvp-icon">🎊</span>
         <h2 class="rsvp-title">Confirma tu asistencia</h2>
-        <p class="rsvp-subtitle">&iexcl;Nos encantar&iacute;a que est&eacute;s con nosotros!</p>
+        <p class="rsvp-subtitle">&iexcl;Nos encantar&iacute;a contar contigo en este d&iacute;a tan especial!</p>
         <a
           class="rsvp-whatsapp-btn"
           id="rsvpWhatsAppBtn"
@@ -918,8 +885,13 @@
           &nbsp;&nbsp;Confirmar por WhatsApp
         </a>
         <p class="rsvp-note">
-          Se abrir&aacute; WhatsApp con tu mensaje de confirmaci&oacute;n listo para enviar
+          Se abrir&aacute; WhatsApp con tu mensaje listo para enviar
         </p>
+        <div class="rsvp-share-row">
+          <button class="rsvp-share-btn" id="shareInviteBtn" type="button">
+            &nbsp;&nbsp;Compartir invitaci&oacute;n
+          </button>
+        </div>
       </div>
     </section>
   </main>
@@ -1160,27 +1132,31 @@
     rsvpBtn.addEventListener('click', function(e) {
       e.preventDefault();
       var hostNumber = '5656168851';
-      var msg = '💕 *Confirmaci\u00f3n de asistencia - Baby Shower*\n\n';
-      msg += '🤰 Beb\u00e9: Alice Madelyn de la Cruz Romo\n';
-      msg += '📅 Fecha: 15 de Noviembre 2026, 3:00 PM\n\n';
-      msg += '✅ *Confirmo mi asistencia*\n\n';
-      msg += '¡Nos vemos ah\u00ed! 🎊';
+      var msg = '💕 *Baby Shower — Alice Madelyn de la Cruz Romo*\n\n';
+      msg += '✅ ¡Confirmo mi asistencia!\n\n';
+      msg += '📅 15 de noviembre 2026 · 3:00 PM\n';
+      msg += '🍼 Nos vemos ahí, ¡falta menos! 🎊';
       var waURL = 'https://wa.me/' + hostNumber + '?text=' + encodeURIComponent(msg);
       window.open(waURL, '_blank');
       confetti();
     });
 
-    /* ===== FOLLOW-UP WHATSAPP ===== */
-    document.getElementById('followupWhatsAppBtn').addEventListener('click', function() {
-      var hostNumber = '5656168851';
-      var msg = '👋 *Seguimiento - Baby Shower Alice Madelyn*\n\n';
-      msg += 'Hola! Quer\u00eda confirmar mi asistencia al Baby Shower de Alice Madelyn de la Cruz Romo 🍼\n';
-      msg += '📅 15 de Noviembre 2026, 3:00 PM\n\n';
-      msg += '✅ *S\u00ed confirmo mi asistencia*\n';
-      msg += '🎉 ¡Quiero ser parte de este d\u00eda tan especial!';
-      var waURL = 'https://wa.me/' + hostNumber + '?text=' + encodeURIComponent(msg);
-      window.open(waURL, '_blank');
-      confetti();
+    /* ===== COMPARTIR INVITACIÓN ===== */
+    document.getElementById('shareInviteBtn').addEventListener('click', function() {
+      var inviteURL = 'https://angeortega45-code.github.io/Invitaci-n-BaBy/';
+      var shareText = '🍼 ¡Estás invitad@ al Baby Shower de Alice Madelyn de la Cruz Romo! 💕\n\n' +
+        '📅 15 de noviembre 2026 · 3:00 PM\n' +
+        '👉 Mira la invitación completa aquí:\n' + inviteURL;
+      if (navigator.share) {
+        navigator.share({
+          title: 'Baby Shower — Alice Madelyn',
+          text: shareText,
+          url: inviteURL
+        }).catch(function() {});
+      } else {
+        var waShareURL = 'https://wa.me/?text=' + encodeURIComponent(shareText);
+        window.open(waShareURL, '_blank');
+      }
     });
 
     /* ===== CONFETTI ===== */
